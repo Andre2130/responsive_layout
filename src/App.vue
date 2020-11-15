@@ -1,28 +1,102 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <div class="container">
+  <nav>Navbar</nav>
+  <main>Main</main>
+  <div id="sidebar">Sidebar</div>
+  <div id="content1">content1</div>
+  <div id="content2">content2</div>
+  <div id="content3">content3</div>
+  <footer>Footer</footer>
+</div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+   
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+:root{
+  --main-radius:5px;
+  --main-padding:5px;
+}
+.container{
+  display: grid;
+  height:100vh;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows:.2fr 1.5fr 1.2fr .8fr;
+  grid-template-areas:
+    "nav nav nav nav"
+    "sidebar main main main"
+    "sidebar content1 content2 content3"
+    "sidebar footer footer footer";
+  grid-gap: 0.2rem;
+  font-family: "Inter", sans-serif;
+  font-weight:800;
+  text-transform:uppercase;
+  font-size: 12px;
+  color:#004d40;
+  text-align:center;
+}
+nav{
+  background: #a7ffeb;
+  grid-area: nav;
+  border-radius:var(--main-radius);
+  padding-top:var(--main-padding);
+}
+main{
+  background: #84ffff;
+  grid-area: main;
+  border-radius:var(--main-radius);
+  padding-top:var(--main-padding);
+}
+#sidebar{
+  background: #18ffff;
+  grid-area:sidebar;
+  border-radius:var(--main-radius);
+  padding-top:var(--main-padding);
+}
+#content1{
+  background: #6fffd2;
+  grid-area:content1;
+  border-radius:var(--main-radius);
+  padding-top:var(--main-padding);
+}
+#content2{
+  background: #64ffda;
+  grid-area:content2;
+  border-radius:var(--main-radius);
+  padding-top:var(--main-padding);
+}
+#content3{
+  background: #73ffba;
+  grid-area:content3;
+  border-radius:var(--main-radius);
+  padding-top:var(--main-padding);
+}
+footer{
+  background: #1de9b6;
+  grid-area:footer;
+  border-radius:var(--main-radius);
+  padding-top:var(--main-padding);
+}
+@media only screen and (max-width:550px){
+  .container{
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.4fr 0.4fr 2.2fr 1.2fr 1.2fr 1.2fr 1fr;
+    grid-template-areas:
+      "nav"
+      "sidebar"
+      "main"
+      "content1"
+      "content2"
+      "content3"
+      "footer"
+  }
 }
 </style>
